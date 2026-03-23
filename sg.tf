@@ -14,7 +14,7 @@ locals {
     })
   ]
   counting_ingress_with_cidr_blocks = [
-    for rule in var.dashboard_ingress_with_cidr_blocks :
+    for rule in var.counting_ingress_with_cidr_blocks :
     lookup(rule, "cidr_blocks", null) == null
     ? merge(rule, { cidr_blocks = join(",", var.public_subnets) })
     : rule
